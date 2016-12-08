@@ -6,7 +6,7 @@
 #    By: tpayen <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/07 17:42:31 by tpayen            #+#    #+#              #
-#    Updated: 2016/12/07 17:47:14 by tpayen           ###   ########.fr        #
+#    Updated: 2016/12/08 16:46:05 by tpayen           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRCDIR = srcs/
 OBJDIR = objs/
 
 SRC_FILES = main.c \
+			get_key_hook.c
 
 DIRS = $(OBJDIR)
 

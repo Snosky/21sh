@@ -6,7 +6,7 @@
 /*   By: tpayen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 17:27:27 by tpayen            #+#    #+#             */
-/*   Updated: 2016/12/07 19:20:36 by tpayen           ###   ########.fr       */
+/*   Updated: 2016/12/08 16:46:11 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int		init_term(void)
 			tcgetattr(0, &(term->default_term)) == -1) // TODO : Peut etre save une copie
 		return (-1); // TODO : Print Error
 	term->term.c_lflag &= ~(ICANON | ECHO);
+	//term->term.c_oflag &= OPOST;
 	term->term.c_cc[VMIN] = 1;
 	term->term.c_cc[VTIME] = 0;
 	tcsetattr(0, TCSADRAIN, &(term->term));
@@ -47,8 +48,10 @@ int		init_term(void)
 
 int		main(void)
 {
-	char	key;
 	t_term	*term;
+	
+	//t_lstd	*lst = NULL;
+	//t_lstd	*tmp;
 
 	if (init_term() == -1)
 		exit(EXIT_FAILURE);
@@ -56,19 +59,33 @@ int		main(void)
 	while (42)
 	{
 		ft_putstr("21sh> ");
-		while(42)
+		if (get_key_hook() == -1)
+			break ;
+		/*while(42)
 		{
-			read(0, &key, sizeof(int));
-			if (key == 10)
+			read(0, key, sizeof(int));
+			tmp = ft_lstdnew(key, sizeof(char *));
+			ft_lstdadd(&lst, tmp);
+			if (key[0] == 10)
 			{
 				ft_putchar_fd('\n', 0);
 				break ;
 			}
-			else if (ft_isprint(key))
+			else if (key[0] == 27)
+				break ;
+			else if (ft_isprint(key[0]))
 			{
-				ft_putchar_fd(key, 0);
+				ft_putchar_fd(key[0], 0);
 			}
 		}
+		if (key[0] == 27)
+			break ;
+		tmp = lst;
+		while (lst->next != tmp)
+		{
+			ft_putchar(((char *)(lst->content))[0]);
+			lst = lst->next;
+		}*/
 	}
 
 	tcsetattr(0, TCSADRAIN, &(term->default_term));
