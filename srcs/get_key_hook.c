@@ -6,7 +6,7 @@
 /*   By: tpayen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/08 16:41:22 by tpayen            #+#    #+#             */
-/*   Updated: 2016/12/08 16:44:14 by tpayen           ###   ########.fr       */
+/*   Updated: 2016/12/12 16:17:58 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,19 @@ int		get_key_hook(void)
 	{
 		read(0, key, sizeof(int));
 		if (ft_isprint(key[0]))
-			ft_putchar(key[0]); // TODO : Dans la liste
+			printable_key_hook(key);
 		else if (key[0] == K_RETURN)
+		{
+			t_term 	*term = ft_term();
+			t_lstd	*lst = term->cmd.cmd;
+			t_lstd	*first = term->cmd.cmd;
+			while (lst->next != first)
+			{
+				ft_putchar(((char *)(lst->content))[0]);
+				lst = lst->next;
+			}
 			return (1);
+		}
 		else if (key[0] == K_ESC)
 			return (-1);
 	}

@@ -6,18 +6,11 @@
 /*   By: tpayen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 17:27:27 by tpayen            #+#    #+#             */
-/*   Updated: 2016/12/08 16:46:11 by tpayen           ###   ########.fr       */
+/*   Updated: 2016/12/12 16:14:11 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <21sh.h>
-
-t_term	*ft_term(void)
-{
-	static t_term	term;
-
-	return (&term);
-}
 
 int		init_term(void)
 {

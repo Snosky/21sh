@@ -6,7 +6,7 @@
 /*   By: tpayen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 17:28:45 by tpayen            #+#    #+#             */
-/*   Updated: 2016/12/08 16:46:34 by tpayen           ###   ########.fr       */
+/*   Updated: 2016/12/12 16:17:51 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,25 @@
 
 typedef struct termios	t_termios;
 
+typedef struct		s_cmd
+{
+	t_lstd			*cmd;
+	t_lstd			*cursor;
+}					t_cmd;
+
 typedef struct		s_term
 {
 	t_termios		term;
 	t_termios		default_term;
-	int			fd;
-	char		*name;
+	t_cmd			cmd;
+	int				fd;
+	char			*name;
 }					t_term;
+
+t_term	*ft_term(void);
 
 int		get_key_hook(void);
 
+int		printable_key_hook(char *key);
+int		add_key_to_cmd(char *key);
 #endif
