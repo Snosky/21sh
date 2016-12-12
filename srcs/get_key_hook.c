@@ -6,7 +6,7 @@
 /*   By: tpayen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/08 16:41:22 by tpayen            #+#    #+#             */
-/*   Updated: 2016/12/12 16:17:58 by tpayen           ###   ########.fr       */
+/*   Updated: 2016/12/12 20:42:00 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		get_key_hook(void)
 		{
 			t_term 	*term = ft_term();
 			t_lstd	*lst = term->cmd.cmd;
-			t_lstd	*first = term->cmd.cmd;
+			t_lstd	*first = term->cmd.cmd->next;
 			while (lst->next != first)
 			{
 				ft_putchar(((char *)(lst->content))[0]);

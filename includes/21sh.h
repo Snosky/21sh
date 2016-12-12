@@ -6,7 +6,7 @@
 /*   By: tpayen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 17:28:45 by tpayen            #+#    #+#             */
-/*   Updated: 2016/12/12 16:17:51 by tpayen           ###   ########.fr       */
+/*   Updated: 2016/12/13 00:52:08 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,19 @@
 # define K_DELETE 2117294875
 # define K_BACKSPACE 127
 
+# define ERR_TERM_FD "Error fd"
+# define ERR_TERM_NAME "Error name"
+# define ERR_TERM_CAP_DB "Error db"
+# define ERR_TERM_TYPE "Error type"
+# define ERR_TERM_ATTR "Error attr"
+
 typedef struct termios	t_termios;
 
 typedef struct		s_cmd
 {
 	t_lstd			*cmd;
 	t_lstd			*cursor;
+	int				len;
 }					t_cmd;
 
 typedef struct		s_term
@@ -50,6 +57,12 @@ typedef struct		s_term
 }					t_term;
 
 t_term	*ft_term(void);
+
+int		ft_error(char *msg);
+
+int		init_hook(void);
+int		init_term(void);
+int		init_cmd(void);
 
 int		get_key_hook(void);
 

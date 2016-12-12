@@ -6,7 +6,7 @@
 #    By: tpayen <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/07 17:42:31 by tpayen            #+#    #+#              #
-#*   Updated: 2016/12/12 16:14:40 by tpayen           ###   ########.fr       *#
+#*   Updated: 2016/12/13 00:50:47 by tpayen           ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,10 @@ OBJDIR = objs/
 
 SRC_FILES = main.c \
 			ft_term.c \
+			ft_error.c \
+			init_hook.c \
+			init_term.c \
+			init_cmd.c \
 			get_key_hook.c \
 			printable_key_hook.c \
 			add_key_to_cmd.c \
