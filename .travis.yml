@@ -1,7 +1,7 @@
 language: c
 
 compiler:
-	- clang
+  - clang
 
 # disable the default submodule logic
 git:
