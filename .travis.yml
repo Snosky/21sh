@@ -15,4 +15,4 @@ before_install:
 install:
 
 script:
-	- make -j
+  - make -j
