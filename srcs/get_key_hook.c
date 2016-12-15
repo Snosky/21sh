@@ -6,7 +6,7 @@
 /*   By: tpayen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/08 16:41:22 by tpayen            #+#    #+#             */
-/*   Updated: 2016/12/12 20:42:00 by tpayen           ###   ########.fr       */
+/*   Updated: 2016/12/15 18:20:28 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,32 @@
 
 int		get_key_hook(void)
 {
-	char	key[1];
+	int		key;
 
 	while (42)
 	{
-		read(0, key, sizeof(int));
-		if (ft_isprint(key[0]))
+		key = 0;
+		read(0, &key, sizeof(int));
+		if (ft_isprint(key))
 			printable_key_hook(key);
-		else if (key[0] == K_RETURN)
+		else if (key == K_LEFT)
+			move_cursor_left();
+		else if (key == K_RIGHT)
+			move_cursor_right();
+		else if (key == K_BACKSPACE)
+			delete_left();
+		else if (key == K_RETURN)
 		{
 			t_term 	*term = ft_term();
-			t_lstd	*lst = term->cmd.cmd;
-			t_lstd	*first = term->cmd.cmd->next;
-			while (lst->next != first)
+			t_lstd	*lst = term->cmd.first;
+			while (lst)
 			{
-				ft_putchar(((char *)(lst->content))[0]);
+				tputs(lst->content, 0, tputc);
 				lst = lst->next;
 			}
 			return (1);
 		}
-		else if (key[0] == K_ESC)
+		else if (key == K_ESC)
 			return (-1);
 	}
 	return (-1);

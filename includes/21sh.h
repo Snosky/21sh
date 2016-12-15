@@ -6,7 +6,7 @@
 /*   By: tpayen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 17:28:45 by tpayen            #+#    #+#             */
-/*   Updated: 2016/12/13 00:52:08 by tpayen           ###   ########.fr       */
+/*   Updated: 2016/12/15 18:16:16 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,15 @@
 # define ERR_TERM_CAP_DB "Error db"
 # define ERR_TERM_TYPE "Error type"
 # define ERR_TERM_ATTR "Error attr"
+# define ERR_CMD_INIT "Error cmd init"
 
 typedef struct termios	t_termios;
 
 typedef struct		s_cmd
 {
-	t_lstd			*cmd;
+	t_lstd			*first;
+	t_lstd			*last;
 	t_lstd			*cursor;
-	int				len;
 }					t_cmd;
 
 typedef struct		s_term
@@ -58,14 +59,26 @@ typedef struct		s_term
 
 t_term	*ft_term(void);
 
+
 int		ft_error(char *msg);
 
 int		init_hook(void);
 int		init_term(void);
 int		init_cmd(void);
 
+void	ft_tputs(char *id);
+int		tputc(int c);
+
+int		print_prompt(void);
+
 int		get_key_hook(void);
 
-int		printable_key_hook(char *key);
-int		add_key_to_cmd(char *key);
+int		printable_key_hook(int key);
+int		add_key_to_cmd(int key);
+int		refresh_cmd(void);
+
+void	move_cursor_left(void);
+void	move_cursor_right(void);
+
+void	delete_left(void);
 #endif

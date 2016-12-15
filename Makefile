@@ -13,7 +13,7 @@
 EXEC = 21sh
 
 CC = clang
-CFLAGS = -Werror -Wextra -Wall
+CFLAGS = -Werror -Wextra -Wall -g
 
 INCLUDES = -Iincludes -Ilibft/includes
 
@@ -29,9 +29,16 @@ SRC_FILES = main.c \
 			init_hook.c \
 			init_term.c \
 			init_cmd.c \
+			tputc.c	\
+			ft_tputs.c \
+			print_prompt.c \
 			get_key_hook.c \
 			printable_key_hook.c \
 			add_key_to_cmd.c \
+			refresh_cmd.c \
+			move_cursor_left.c \
+			move_cursor_right.c \
+			delete_left.c \
 
 DIRS = $(OBJDIR)
 

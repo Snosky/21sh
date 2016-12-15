@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   delete_left.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpayen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/07 17:27:27 by tpayen            #+#    #+#             */
-/*   Updated: 2016/12/15 16:14:41 by tpayen           ###   ########.fr       */
+/*   Created: 2016/12/15 18:11:07 by tpayen            #+#    #+#             */
+/*   Updated: 2016/12/15 19:25:24 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <21sh.h>
 
-int		main(void)
+void	cmd_delone(void *content, size_t size)
+{
+	(void)size;
+	free(content);
+	content = NULL;
+}
+
+void	delete_left(void)
 {
 	t_term	*term;
-	
-	if (init_hook() == -1)
-		exit(EXIT_FAILURE);
-	term = ft_term();
-	while (42)
-	{
-		print_prompt();
-		if (get_key_hook() == -1)
-			break ;
-	}
 
-	tcsetattr(0, TCSADRAIN, &(term->default_term));
-	return (0);
+	term = ft_term();
+	/*if (term->cmd.cursor->prev)
+	{
+		if (term->cmd.cursor->prev == term->cmd.first)
+			term->cmd.first = term->cmd.first->next;*/
+		ft_lstddelone(&(term->cmd.cursor->prev), cmd_delone);
+	//}
+		ft_tputs("le");
+		refresh_cmd();
 }

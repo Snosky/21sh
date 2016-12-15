@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_hook.c                                        :+:      :+:    :+:   */
+/*   print_prompt.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpayen <tpayen@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tpayen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/13 00:31:54 by tpayen            #+#    #+#             */
-/*   Updated: 2016/12/15 17:30:14 by tpayen           ###   ########.fr       */
+/*   Created: 2016/12/15 16:01:22 by tpayen            #+#    #+#             */
+/*   Updated: 2016/12/15 16:14:27 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <21sh.h>
 
-int		init_hook(void)
+int		print_prompt(void)
 {
-	init_term();
-	init_cmd();
+	char	*prompt;
+
+	prompt = ft_strdup("21sh> ");
+	tputs(prompt, 0, tputc);
 	return (1);
 }

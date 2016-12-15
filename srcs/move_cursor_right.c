@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_hook.c                                        :+:      :+:    :+:   */
+/*   move_cursor_right.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpayen <tpayen@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tpayen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/13 00:31:54 by tpayen            #+#    #+#             */
-/*   Updated: 2016/12/15 17:30:14 by tpayen           ###   ########.fr       */
+/*   Created: 2016/12/15 17:50:40 by tpayen            #+#    #+#             */
+/*   Updated: 2016/12/15 17:51:46 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <21sh.h>
 
-int		init_hook(void)
+void	move_cursor_right(void)
 {
-	init_term();
-	init_cmd();
-	return (1);
+	t_term	*term;
+
+	term = ft_term();
+	if (term->cmd.cursor->next != NULL)
+	{
+		term->cmd.cursor = term->cmd.cursor->next;
+		ft_tputs("nd"); // TODO : Verif init "nd" dispo
+	}
 }

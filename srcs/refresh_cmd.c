@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   refresh_cmd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpayen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/07 17:27:27 by tpayen            #+#    #+#             */
-/*   Updated: 2016/12/15 16:14:41 by tpayen           ###   ########.fr       */
+/*   Created: 2016/12/15 17:19:40 by tpayen            #+#    #+#             */
+/*   Updated: 2016/12/15 18:42:16 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <21sh.h>
 
-int		main(void)
+int		refresh_cmd(void)
 {
 	t_term	*term;
-	
-	if (init_hook() == -1)
-		exit(EXIT_FAILURE);
-	term = ft_term();
-	while (42)
-	{
-		print_prompt();
-		if (get_key_hook() == -1)
-			break ;
-	}
+	t_lstd	*cmd;
 
-	tcsetattr(0, TCSADRAIN, &(term->default_term));
-	return (0);
+	term = ft_term();
+	cmd = term->cmd.cursor->prev;
+	tputs("\033[s", 0, tputc);
+	tputs("\033[J", 0, tputc);
+	while (cmd && cmd->content != NULL)
+	{
+		tputs(cmd->content, 0, tputc);
+		cmd = cmd->next;
+	}
+	if (cmd && term->cmd.cursor->content != NULL)
+	{
+		tputs("\033[u", 0, tputc);
+		ft_tputs("nd");
+	}
+	return (1);
 }

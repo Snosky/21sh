@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_hook.c                                        :+:      :+:    :+:   */
+/*   tputc.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpayen <tpayen@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tpayen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/13 00:31:54 by tpayen            #+#    #+#             */
-/*   Updated: 2016/12/15 17:30:14 by tpayen           ###   ########.fr       */
+/*   Created: 2016/12/15 16:11:24 by tpayen            #+#    #+#             */
+/*   Updated: 2016/12/15 16:13:09 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <21sh.h>
 
-int		init_hook(void)
+int		tputc(int c)
 {
-	init_term();
-	init_cmd();
-	return (1);
+	t_term	*term;
+
+	term = ft_term();
+	return ((int)write(term->fd, &c, 1));
 }
