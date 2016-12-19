@@ -6,7 +6,7 @@
 /*   By: tpayen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 18:11:07 by tpayen            #+#    #+#             */
-/*   Updated: 2016/12/19 15:14:48 by tpayen           ###   ########.fr       */
+/*   Updated: 2016/12/20 00:35:15 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	delete_left(void)
 	term = ft_term();
 	if (term->cmd.cursor->prev)
 	{
-		/*if (term->cmd.cursor->prev == term->cmd.first)
-			term->cmd.first = term->cmd.first->next;*/
+		if (term->cmd.cursor->prev == term->cmd.first)
+			term->cmd.first = term->cmd.first->next;
 		ft_lstddelone(&(term->cmd.cursor->prev), cmd_delone);
 		refresh_cmd(CURSOR_PREV);
 	}
