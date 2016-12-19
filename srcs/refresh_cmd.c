@@ -6,13 +6,13 @@
 /*   By: tpayen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 17:19:40 by tpayen            #+#    #+#             */
-/*   Updated: 2016/12/16 17:40:27 by tpayen           ###   ########.fr       */
+/*   Updated: 2016/12/19 15:08:26 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <21sh.h>
 
-int		refresh_cmd(void)
+int		refresh_cmd(int cursor_pos)
 {
 	t_term	*term;
 	t_lstd	*cmd;
@@ -26,10 +26,18 @@ int		refresh_cmd(void)
 		tputs(cmd->content, 0, tputc);
 		cmd = cmd->next;
 	}
-	if (cmd && term->cmd.cursor->content != NULL)
-	{
+
+	//if (cmd && term->cmd.cursor->content != NULL)
+	//{
 		tputs("\033[u", 0, tputc);
-		ft_tputs("nd");
-	}
+		/*if (cursor_pos == CURSOR_NEXT)
+			ft_tputs("nd");
+		else if (cursor_pos == CURSOR_PREV)
+			ft_tputs("le");*/
+	//}
+		if (cursor_pos == CURSOR_NEXT)
+			ft_tputs("nd");
+		else if (cursor_pos == CURSOR_PREV)
+			ft_tputs("le");
 	return (1);
 }

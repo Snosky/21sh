@@ -6,7 +6,7 @@
 /*   By: tpayen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 18:11:07 by tpayen            #+#    #+#             */
-/*   Updated: 2016/12/16 17:35:46 by tpayen           ###   ########.fr       */
+/*   Updated: 2016/12/19 15:14:48 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ void	delete_left(void)
 		/*if (term->cmd.cursor->prev == term->cmd.first)
 			term->cmd.first = term->cmd.first->next;*/
 		ft_lstddelone(&(term->cmd.cursor->prev), cmd_delone);
-		refresh_cmd();
+		refresh_cmd(CURSOR_PREV);
 	}
 }

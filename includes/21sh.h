@@ -6,7 +6,7 @@
 /*   By: tpayen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 17:28:45 by tpayen            #+#    #+#             */
-/*   Updated: 2016/12/15 18:16:16 by tpayen           ###   ########.fr       */
+/*   Updated: 2016/12/19 02:55:35 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@
 # define ERR_TERM_TYPE "Error type"
 # define ERR_TERM_ATTR "Error attr"
 # define ERR_CMD_INIT "Error cmd init"
+
+enum e_cursor_pos {CURSOR_NEXT, CURSOR_PREV};
 
 typedef struct termios	t_termios;
 
@@ -75,7 +77,7 @@ int		get_key_hook(void);
 
 int		printable_key_hook(int key);
 int		add_key_to_cmd(int key);
-int		refresh_cmd(void);
+int		refresh_cmd(int cursor_pos);
 
 void	move_cursor_left(void);
 void	move_cursor_right(void);
