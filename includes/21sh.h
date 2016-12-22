@@ -6,7 +6,7 @@
 /*   By: tpayen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 17:28:45 by tpayen            #+#    #+#             */
-/*   Updated: 2016/12/22 15:36:27 by tpayen           ###   ########.fr       */
+/*   Updated: 2016/12/22 15:54:38 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,10 @@
 # define ERR_TERM_TYPE "Error type"
 # define ERR_TERM_ATTR "Error attr"
 # define ERR_CMD_INIT "Error cmd init"
+
+# define SAVE_CURSOR_POS "\033[s"
+# define RESET_CURSOR_POS "\033[u"
+# define ERASE_DOWN "\033[J"
 
 enum e_cursor_pos {CURSOR_NEXT, CURSOR_PREV, CURSOR_DEF};
 
