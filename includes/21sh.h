@@ -6,7 +6,7 @@
 /*   By: tpayen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 17:28:45 by tpayen            #+#    #+#             */
-/*   Updated: 2016/12/19 02:55:35 by tpayen           ###   ########.fr       */
+/*   Updated: 2016/12/22 15:36:27 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@
 # define ERR_TERM_ATTR "Error attr"
 # define ERR_CMD_INIT "Error cmd init"
 
-enum e_cursor_pos {CURSOR_NEXT, CURSOR_PREV};
+enum e_cursor_pos {CURSOR_NEXT, CURSOR_PREV, CURSOR_DEF};
 
 typedef struct termios	t_termios;
 
@@ -82,5 +82,6 @@ int		refresh_cmd(int cursor_pos);
 void	move_cursor_left(void);
 void	move_cursor_right(void);
 
-void	delete_left(void);
+void	cmd_delone(void *content, size_t size);
+void	delete_keys(int key);
 #endif

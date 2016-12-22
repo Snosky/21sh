@@ -6,7 +6,7 @@
 #    By: tpayen <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/07 17:42:31 by tpayen            #+#    #+#              #
-#*   Updated: 2016/12/13 00:50:47 by tpayen           ###   ########.fr       *#
+#*   Updated: 2016/12/22 15:36:42 by tpayen           ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,8 @@ SRC_FILES = main.c \
 			refresh_cmd.c \
 			move_cursor_left.c \
 			move_cursor_right.c \
-			delete_left.c \
+			cmd_delone.c \
+			delete_keys.c \
 
 DIRS = $(OBJDIR)
 

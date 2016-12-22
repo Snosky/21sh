@@ -6,7 +6,7 @@
 /*   By: tpayen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 17:19:40 by tpayen            #+#    #+#             */
-/*   Updated: 2016/12/22 15:10:14 by tpayen           ###   ########.fr       */
+/*   Updated: 2016/12/22 15:30:49 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,10 @@ int		refresh_cmd(int cursor_pos)
 
 	term = ft_term();
 	cmd = term->cmd.cursor->prev;
-	if (cursor_pos == CURSOR_PREV)
-	{
+	if (cursor_pos == CURSOR_PREV || cursor_pos == CURSOR_DEF)
 		cmd = term->cmd.cursor;
+	if (cursor_pos == CURSOR_PREV)
 		ft_tputs("le");
-	}
 	tputs("\033[s", 0, tputc);
 	tputs("\033[J", 0, tputc);
 	while (cmd && cmd->content)
