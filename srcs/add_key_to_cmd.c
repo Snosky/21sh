@@ -6,7 +6,7 @@
 /*   By: tpayen <tpayen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/12 16:07:22 by tpayen            #+#    #+#             */
-/*   Updated: 2016/12/22 14:20:56 by tpayen           ###   ########.fr       */
+/*   Updated: 2016/12/22 14:55:34 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int		add_key_to_cmd(int key)
 	if (!(tmp = ft_lstdnew(ft_strdup(str), sizeof(char *))))
 		return (-1);
 	ft_lstdadd(&(term->cmd.cursor), tmp, 1);
+	//term->cmd.cursor = tmp;
 	if (!tmp->prev)
 		term->cmd.first = tmp;
 	if (!tmp->next)
