@@ -6,7 +6,7 @@
 /*   By: tpayen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/08 16:41:22 by tpayen            #+#    #+#             */
-/*   Updated: 2016/12/15 18:20:28 by tpayen           ###   ########.fr       */
+/*   Updated: 2016/12/22 15:36:13 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int		get_key_hook(void)
 			move_cursor_left();
 		else if (key == K_RIGHT)
 			move_cursor_right();
-		else if (key == K_BACKSPACE)
-			delete_left();
+		else if (key == K_BACKSPACE || key == K_DELETE)
+			delete_keys(key);
 		else if (key == K_RETURN)
 		{
 			t_term 	*term = ft_term();

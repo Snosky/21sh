@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_key_to_cmd.c                                   :+:      :+:    :+:   */
+/*   delete_keys.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpayen <tpayen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/12 16:07:22 by tpayen            #+#    #+#             */
-/*   Updated: 2016/12/22 14:55:34 by tpayen           ###   ########.fr       */
+/*   Created: 2016/12/22 15:32:34 by tpayen            #+#    #+#             */
+/*   Updated: 2016/12/22 15:36:50 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <21sh.h>
 
-int		add_key_to_cmd(int key)
+void	delete_keys(int key)
 {
 	t_term	*term;
-	t_lstd	*tmp;
-	char	str[2];
+	t_lstd	*del;
 
 	term = ft_term();
-	str[0] = key;
-	str[1] = 0;
-	if (!(tmp = ft_lstdnew(ft_strdup(str), sizeof(char *))))
-		return (-1);
-	ft_lstdadd(&(term->cmd.cursor), tmp, 1);
-	//term->cmd.cursor = tmp;
-	if (!tmp->prev)
-		term->cmd.first = tmp;
-	if (!tmp->next)
-		term->cmd.last = tmp;
-	return (1);
+	if (key == K_BACKSPACE && term->cmd.cursor->prev)
+	{
+		del = term->cmd.cursor->prev;
+		ft_lstddelone(&del, cmd_delone);
+		refresh_cmd(CURSOR_PREV);
+	}
+	else if (key == K_DELETE && term->cmd.cursor && term->cmd.cursor->content)
+	{
+		del = term->cmd.cursor;
+		term->cmd.cursor = term->cmd.cursor->next;
+		ft_lstddelone(&del, cmd_delone);
+		refresh_cmd(CURSOR_DEF);
+	}
 }
