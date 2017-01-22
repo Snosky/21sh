@@ -6,7 +6,7 @@
 /*   By: tpayen <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/07 17:28:45 by tpayen            #+#    #+#             */
-/*   Updated: 2016/12/22 15:54:38 by tpayen           ###   ########.fr       */
+/*   Updated: 2017/01/22 01:57:08 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct		s_cmd
 	t_lstd			*first;
 	t_lstd			*last;
 	t_lstd			*cursor;
+	int				cursor_pos;
 }					t_cmd;
 
 typedef struct		s_term

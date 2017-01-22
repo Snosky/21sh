@@ -6,7 +6,7 @@
 /*   By: tpayen <tpayen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/13 00:43:05 by tpayen            #+#    #+#             */
-/*   Updated: 2016/12/22 14:54:25 by tpayen           ###   ########.fr       */
+/*   Updated: 2017/01/22 01:58:40 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ int		init_cmd(void)
 	if (!(term->cmd.cursor = ft_lstdnew(NULL, sizeof(int))))
 		return (-1);
 	term->cmd.last = term->cmd.cursor;
+	term->cmd.cursor_pos = 0;
 	return (1);
 }
